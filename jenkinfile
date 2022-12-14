@@ -9,14 +9,15 @@ stages
     }
     stage ('unit test framework')
     {
-        steps {jdk: 'Java-home', maven: 'MVN-Home') {
-    sh 'mvn test'}}
+        steps {withMaven(jdk: 'Java-home', maven: 'MVN-Home') {
+    sh 'mvn test'
+    }}
     }
-    
-    stage ('creating artifact')
+    stage ('creating artifacts')
     {
-        steps {jdk: 'Java-home', maven: 'MVN-Home') {
-   sh 'mvn package'}}
+        steps {withMaven(jdk: 'Java-home', maven: 'MVN-Home') {
+    sh 'mvn package'
+    }}
     }
 }    
 }
