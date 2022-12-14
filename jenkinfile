@@ -1,0 +1,22 @@
+pipeline
+{
+agent any
+stages
+{
+    stage ('copy code from github')
+    {
+        steps {git branch: 'master', url: 'https://github.com/Devopstech321/maven-jenkin-pipeline'}
+    }
+    stage ('unit test framework')
+    {
+        steps {withMaven(globalMavenSettingsConfig: '--- Use system default settings or file path ---', jdk: 'Java-home', maven: 'MVN-Home', mavenSettingsConfig: '--- Use system default settings or file path ---') {
+    sh 'mvn test'}}
+    }
+    
+    stage ('creating artifact')
+    {
+        steps {withMaven(globalMavenSettingsConfig: '--- Use system default settings or file path ---', jdk: 'Java-home', maven: 'MVN-Home', mavenSettingsConfig: '--- Use system default settings or file path ---') {
+   sh 'mvn package'}}
+    }
+}    
+}
