@@ -9,13 +9,13 @@ stages
     }
     stage ('unit test framework')
     {
-        steps {withMaven(globalMavenSettingsConfig: '--- Use system default settings or file path ---', jdk: 'Java-home', maven: 'MVN-Home', mavenSettingsConfig: '--- Use system default settings or file path ---') {
+        steps {jdk: 'Java-home', maven: 'MVN-Home') {
     sh 'mvn test'}}
     }
     
     stage ('creating artifact')
     {
-        steps {withMaven(globalMavenSettingsConfig: '--- Use system default settings or file path ---', jdk: 'Java-home', maven: 'MVN-Home', mavenSettingsConfig: '--- Use system default settings or file path ---') {
+        steps {jdk: 'Java-home', maven: 'MVN-Home') {
    sh 'mvn package'}}
     }
 }    
