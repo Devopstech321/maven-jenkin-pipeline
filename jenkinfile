@@ -23,7 +23,7 @@ stages
     {
     steps {
     sshagent(['tomcat-ssh-key']) {
-    sh 'scp -o StrictHostKeyChecking=no /var/lib/jenkins/workspace/maven-jenkin pipeline project/webapp/target/webapp.war ec2-user@172.31.1.136 : /var/lib/tomcat/webapps/ '
+    sh 'scp -o StrictHostKeyChecking=no /var/lib/jenkins/workspace/maven-jenkin pipeline project/webapp/target/webapp.war ec2-user@172.31.1.136:/var/lib/tomcat/webapps/ '
     }
     }
 }    
