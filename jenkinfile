@@ -19,5 +19,13 @@ stages
     sh 'mvn package'
     }}
     }
+    stage ('deploying in tomcat server)
+    {
+    steps {
+    sshagent(['tomcat-ssh-key']) {
+    sh 'scp -o StrictHostKeyChecking=no */target/webapp/*.war ec2-user@172.31.1.136: var/lib/tomcat/webapps'
+    }
+    }
+}
 }    
 }
